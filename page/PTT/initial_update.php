@@ -21,13 +21,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <div class="row">
-              <div class="col-sm-6">
-                  <span for="">Registered Date From:</span> <input type="date" id="approverequestDateFrom" class="form-control" value="<?=$server_date_only;?>" autocomplete=off>
-                  </div>
-               
-                  <div class="col-sm-6">
-                  <span for="">Registered Date To:</span>  <input type="date" id="approverequestDateTo" class="form-control" value="<?=$server_date_only;?>" autocomplete=off>
-                  </div>
+             
             </div>
           </div>
         </div><!-- /.row -->

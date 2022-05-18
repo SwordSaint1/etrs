@@ -17,22 +17,29 @@
                     $final_process = $line[1];
                     $final_status = $line[2];
                     $final_training_date = $line[3];
-                 
+                    $final_training_end_date = $line[4];
                     
                     // CHECK IF BLANK DATA
-                    if($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == ''){
+                    if($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[4] == ''){
                         // IF BLANK DETECTED ERROR += 1
                         $error = $error + 1;
                     }else{
                         // CHECK DATA
-                    $prevQuery = "SELECT id FROM etrs_final WHERE emp_id = '$line[1]' AND final_process = '$line[1]' AND final_training_date = '$line[2]'";
+                    $prevQuery = "SELECT id,emp_id,final_process,final_training_date FROM etrs_final WHERE emp_id = '$line[0]' AND final_process = '$line[1]'  ";
                     $res = $conn->prepare($prevQuery);
                     $res->execute();
                     if($res->rowCount() > 0){
                         foreach($res->fetchALL() as $x){
                             $id = $x['id'];
+                            $final_process = $x['final_process'];
                         }
-                        $update = "UPDATE etrs_final SET emp_id = '$emp_id', final_process = '$final_process', final_status = '$final_status', final_training_date = '$final_training_date', final_registration_code = '$itc' WHERE id ='$id'";
+
+                         $dates = new DateTime($final_training_date);
+                        $training_dates = date_format($dates, "Y-m-d");
+                         $datesss = new DateTime($final_training_end_date);
+                        $training_end_dates = date_format($datesss, "Y-m-d");
+                          $final_process = str_replace(' ', '_', $final_process);
+                        $update = "UPDATE etrs_final SET emp_id = '$emp_id', final_process = '$final_process', final_status = '$final_status', final_training_date = '$training_dates', final_registration_code = '$itc', final_training_end_date = '$training_end_dates' WHERE id ='$id' AND final_process = '$final_process'";
                         $stmt = $conn->prepare($update);
                         if($stmt->execute()){
                             $error = 0;
@@ -41,11 +48,14 @@
                         }
                         
                     }else{
+                        $dates = new DateTime($final_training_date);
+                        $training_dates = date_format($dates, "Y-m-d");
 
-                           $datessss = new DateTime($final_training_date);
-                        $final_training_dates = date_format($datessss, "Y-m-d");
+                         $datesss = new DateTime($final_training_end_date);
+                        $training_end_dates = date_format($datesss, "Y-m-d");
 
-                        $insert = "INSERT INTO etrs_final (`emp_id`,`final_process`,`final_status`,`final_training_date`,`final_registration_code`) VALUES ('$emp_id','$final_process','$final_status','$final_training_dates','$ftc')";
+                           $final_process = str_replace(' ', '_', $final_process);
+                        $insert = "INSERT INTO etrs_final (`emp_id`,`final_process`,`final_status`,`final_training_date`,`final_registration_code`,`final_training_end_date`) VALUES ('$emp_id','$final_process','$final_status','$training_dates','$itc','$training_end_dates')";
                         $stmt = $conn->prepare($insert);
                         if($stmt->execute()){
                             $error = 0;

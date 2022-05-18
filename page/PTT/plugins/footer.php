@@ -9,14 +9,20 @@
 //MODALS
 include '../../modals/logout.php';
 include '../../modals/ptt/register.php';
+include '../../modals/ptt/update_ptt.php';
 include '../../modals/ptt/import_training_records.php';
 include '../../modals/ptt/import_initial_training_records.php';
 include '../../modals/ptt/import_final_training_records.php';
+include '../../modals/ptt/import_initial_practice_training_records.php';
+include '../../modals/ptt/import_final_practice_training_records.php';
 include '../../modals/initial/update.php';
 include '../../modals/initial/reupdate.php';
 include '../../modals/final/update.php';
 include '../../modals/final/reupdate.php';
-
+include '../../modals/special/initial_practice.php';
+include '../../modals/special/reupdate.php';
+include '../../modals/special/final_practice.php';
+include '../../modals/special/final_reupdate.php';
 ?>
 <!-- jQuery -->
 <!-- <script src="../../plugins/jquery/jquery.min.js"></script> -->

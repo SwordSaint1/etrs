@@ -140,19 +140,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="initial_practice_import.php" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>Import Training Records</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="initial_practice_update.php" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>Update Training Records</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="initial_practice_view.php" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>View Training Records</p>
                     </a>
@@ -172,19 +172,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="final_practice_import.php" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>Import Training Records</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="final_practice_update.php" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>Update Training Records</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="final_practice_view.php" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>View Training Records</p>
                     </a>

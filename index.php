@@ -49,7 +49,7 @@
       <select  id="section_acc"  name="section_acc" class="form-control">
                     <option value="">Select Section </option>
                     <option value="PTT">PTT</option>
-                     <option value="MNTT">MTT</option>
+                     <option value="MNTT">MNTT</option>
                       <option value="SEP">SEP</option>
                
                 </select>

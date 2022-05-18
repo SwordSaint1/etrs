@@ -22,6 +22,8 @@ if ($method == 'register_training_record') {
 	$training_date = $_POST['training_date'];
 	$date_hired = $_POST['date_hired'];
 	$theory_remarks = $_POST['theory_remarks'];
+	$training_end_date = $_POST['training_end_date'];
+	$provider = $_POST['provider'];
 
 	$check = "SELECT id FROM etrs_training_record WHERE employee_num = '$employee_num'";
 
@@ -32,7 +34,7 @@ if ($method == 'register_training_record') {
 		echo 'Training Record Already Exist!';
 	
 	}else{
-		$insert = "INSERT INTO etrs_training_record (`batch_no`,`employee_num`,`gender`,`full_name`,`department`,`position`,`theory_training`,`training_date`,`theory_remarks`,`registration_code`,`date_hired`) VALUES ('$batch_no','$employee_num','$gender','$full_name','$department','$position','$theory_training','$training_date','$theory_remarks','$registration_code','$date_hired')";
+		$insert = "INSERT INTO etrs_training_record (`batch_no`,`employee_num`,`gender`,`full_name`,`department`,`position`,`theory_training`,`training_date`,`theory_remarks`,`registration_code`,`date_hired`,`training_end_date`,`provider`) VALUES ('$batch_no','$employee_num','$gender','$full_name','$department','$position','$theory_training','$training_date','$theory_remarks','$registration_code','$date_hired','$training_end_date','$provider')";
 		$stmt= $conn->prepare($insert);
 		if ($stmt->execute()) {
 
@@ -59,13 +61,15 @@ if ($method == 'preview_training_record_data') {
 			echo '<td><b>'.$c.'</b></td>';
 			echo '<td><b>'.$x['batch_no'].'</b></td>';
 			echo '<td><b>'.$x['employee_num'].'</b></td>';
+			echo '<td><b>'.$x['provider'].'</b></td>';
 			echo '<td><b>'.$x['full_name'].'</b></td>';
 			echo '<td><b>'.$x['gender'].'</b></td>';
 			echo '<td><b>'.$x['department'].'</b></td>';
 			echo '<td><b>'.$x['position'].'</b></td>';
+		    echo '<td><b>'.$x['date_hired'].'</b></td>';
 			echo '<td><b>'.$x['theory_training'].'</b></td>';
 			echo '<td><b>'.$x['training_date'].'</b></td>';
-			echo '<td><b>'.$x['date_hired'].'</b></td>';
+			echo '<td><b>'.$x['training_end_date'].'</b></td>';
 			echo '<td><b>'.$x['theory_remarks'].'</b></td>';
 		echo '</tr>';
 	}

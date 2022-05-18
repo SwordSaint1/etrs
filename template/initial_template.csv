@@ -1,2 +1,3 @@
-﻿employee id,initial process,initial status,initial training date
-21-07087,First Process,Passed,4/29/2022
+﻿employee id,initial process,initial status,initial training start  date,initial training end  date
+21-07087,First_Process,Passed,4/29/2022,4/29/2022
+21-07087,Secondary_Process,Passed,5/13/2022,5/14/2022

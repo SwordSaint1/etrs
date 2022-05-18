@@ -41,7 +41,7 @@
                  </div>
            </div>  
            <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                      <span>Process:</span>
                     <select id="initial_process_update" class="form-control">
                         <option value="">Select Intial Process</option>
@@ -50,7 +50,7 @@
                         <option value="Material_Handling">Material Handling</option>
                     </select>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                        <span>Initial Training:</span>
                     <select class="form-control" id="initial_status_update">
                         <option value="">Select Initial Training Status</option>
@@ -60,13 +60,17 @@
                         <option value="Pulled_Out">Pulled Out</option>
                         <option value="Resigned">Resigned</option>
                         <option value="Retrained">Retrained</option>
+                        <option value="No_Training">No Training</option>
                     </select>
                 </div>
-                <div class="col-4">
-                     <span>Training Date:</span>
-                    <input type="date" name="date_hired" id="initial_training_date_update" class="form-control">
+                <div class="col-3">
+                     <span>Training Start Date:</span>
+                    <input type="date" name="" id="initial_training_date_update" class="form-control">
                 </div>
-                
+                 <div class="col-3">
+                     <span>Training End Date:</span>
+                    <input type="date" name="" id="initial_training_ends_date_updates" class="form-control">
+                </div>
                
            </div>       
            <br>

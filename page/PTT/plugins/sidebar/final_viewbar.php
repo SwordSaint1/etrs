@@ -121,6 +121,79 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon  fas fa-book nav-icon"></i>
+              <p>
+                Special Process
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">        
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Initial Practice Training
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="initial_practice_import.php" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Import Training Records</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="initial_practice_update.php" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Update Training Records</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="initial_practice_view.php" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>View Training Records</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              
+            </ul>
+            <ul class="nav nav-treeview">        
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Final Practice Training
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="final_practice_import.php" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Import Training Records</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="final_practice_update.php" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Update Training Records</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="final_practice_view.php" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>View Training Records</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              
+            </ul>
+          </li>
            
           </li>  
          <?php include 'logout.php' ;?>

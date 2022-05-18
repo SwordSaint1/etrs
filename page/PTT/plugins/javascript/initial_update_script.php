@@ -63,7 +63,7 @@ document.getElementById('initial_department_update').value = department;
 document.getElementById('initial_position_update').value = position;
 document.getElementById('initial_date_hired_update').value = date_hired;
 
-}
+} 
 
 const update_initial_record =()=>{
     var initial_registration_code = document.querySelector('#initial_registration_code').innerHTML;
@@ -71,7 +71,7 @@ const update_initial_record =()=>{
     var initial_process = document.getElementById('initial_process_update').value;
     var initial_status = document.getElementById('initial_status_update').value;
     var initial_training_date = document.getElementById('initial_training_date_update').value;
-
+    var initial_training_end_date_updates = document.getElementById('initial_training_ends_date_updates').value;
      $.ajax({
         url: '../../process/ptt/initial_record.php',
         type: 'POST', 
@@ -82,7 +82,8 @@ const update_initial_record =()=>{
             emp_id:emp_id,
             initial_process:initial_process,
             initial_status:initial_status,
-            initial_training_date:initial_training_date
+            initial_training_date:initial_training_date,
+            initial_training_end_date_updates:initial_training_end_date_updates
         },success:function(x){
 
         if (x == 'Training Record Already Exist!') {

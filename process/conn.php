@@ -24,6 +24,16 @@
         $frandomCode = mt_rand(10000,50000);
         $ftc = $fprefix."".$fdateCode."".$frandomCode;
 
+            $ipprefix = "IPTC:";
+        $ipdateCode = date('ymd');
+        $iprandomCode = mt_rand(10000,50000);
+        $iptc = $ipprefix."".$ipdateCode."".$iprandomCode;
+
+        $fpprefix = "FPTC:";
+        $fpdateCode = date('ymd');
+        $fprandomCode = mt_rand(10000,50000);
+        $fptc = $fpprefix."".$fpdateCode."".$fprandomCode;
+
     try {
         $conn = new PDO ("mysql:host=$servername;dbname=etrs_db",$username,$pass);
 

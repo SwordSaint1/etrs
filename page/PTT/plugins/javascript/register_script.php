@@ -30,7 +30,8 @@ const save_training_record =()=> {
     var training_date = document.getElementById('training_date').value;
 	var date_hired = document.getElementById('date_hired').value;
     var theory_remarks = document.getElementById('theory_remarks').value;
-
+    var training_end_date = document.getElementById('training_end_date').value;
+    var provider = document.getElementById('provider').value;
 
    
         if(batch_no == ''){  
@@ -48,13 +49,14 @@ const save_training_record =()=> {
         }else if(theory_training == ''){
          swal('Notification', 'Please Select Theory Training Status', 'info');   
         }else if(training_date == ''){
-         swal('Notification', 'Please Enter Training Date', 'info');   
+         swal('Notification', 'Please Enter Training Start Date', 'info');   
         }else if(date_hired == ''){
          swal('Notification', 'Please Enter Date Hired', 'info');   
         }
-        // else if(theory_remarks == ''){
-        //  swal('Notification', 'Please Enter ', 'info');   
-        // }
+        else if(training_end_date == ''){
+         swal('Notification', 'Please Enter Training End Date', 'info');   
+        }
+        
 else{
 
 
@@ -74,7 +76,9 @@ else{
             theory_training:theory_training,
             training_date:training_date,
             date_hired:date_hired,
-            theory_remarks:theory_remarks
+            theory_remarks:theory_remarks,
+            training_end_date:training_end_date,
+            provider:provider
         },success:function(x){
 
         if (x == 'Training Record Already Exist!') {

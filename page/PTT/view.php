@@ -21,13 +21,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <div class="row">
-              <div class="col-sm-6">
-                  <span for="">Registered Date From:</span> <input type="date" id="approverequestDateFrom" class="form-control" value="<?=$server_date_only;?>" autocomplete=off>
-                  </div>
-               
-                  <div class="col-sm-6">
-                  <span for="">Registered Date To:</span>  <input type="date" id="approverequestDateTo" class="form-control" value="<?=$server_date_only;?>" autocomplete=off>
-                  </div>
+             
             </div>
           </div>
         </div><!-- /.row -->
@@ -70,16 +64,19 @@
                 <table class="table table-head-fixed text-nowrap table-hover" id="training_data">
                 <thead style="text-align:center;">
                     <th>#</th>
-                    <th>Batch No</th>
-                    <th>Employee No</th>
-                    <th>Full Name</th>
-                    <th>Gender</th>
-                    <th>Department</th>
-                    <th>Position</th>
-                    <th>Theory Training Status</th>
-                    <th>Training Date</th>
-                    <th>Date Hired</th>
-                    <th>Remarks</th>
+                    <th>Batch No </th>
+                    <th>SP ID Number </th>
+                    <th>FALP ID Number </th>
+                    <th>Maiden Name </th>
+                    <th>Full Name </th>
+                    <th>Gender </th>
+                    <th>Department </th>
+                    <th>Position </th>
+                    <th>Date Hired </th>
+                    <th>Theory Training Status </th>
+                    <th>Training Start Date </th>
+                    <th>Training End Date </th>
+                    <th>Remarks </th>
             </thead>
             <tbody id="view_data_training_record" style="text-align:center;"></tbody>
                 </table>

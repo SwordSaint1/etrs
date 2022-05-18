@@ -131,7 +131,7 @@
             </a>
             <ul class="nav nav-treeview">        
               <li class="nav-item menu-open">
-                <a href="#" class="nav-link active">
+                <a href="#" class="nav-link active  ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                     Initial Practice Training
