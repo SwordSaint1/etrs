@@ -15,7 +15,7 @@ if ($method == 'fetch_training_record') {
 		foreach($stmt->fetchALL() as $j){
 			$c++;
 
-			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update_record_ptt" onclick="get_training_record_ptt(&quot;'.$j['id'].'~!~'.$j['batch_no'].'~!~'.$j['provider'].'~!~'.$j['employee_num'].'~!~'.$j['maiden_name'].'~!~'.$j['full_name'].'~!~'.$j['gender'].'~!~'.$j['department'].'~!~'.$j['position'].'~!~'.$j['date_hired'].'~!~'.$j['theory_training'].'~!~'.$j['training_date'].'~!~'.$j['training_end_date'].'~!~'.$j['theory_remarks'].'&quot;)">';
+			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#update_record_ptt" onclick="get_training_record_ptt(&quot;'.$j['id'].'~!~'.$j['batch_no'].'~!~'.$j['provider'].'~!~'.$j['employee_num'].'~!~'.$j['maiden_name'].'~!~'.$j['full_name'].'~!~'.$j['gender'].'~!~'.$j['department'].'~!~'.$j['position'].'~!~'.$j['date_hired'].'~!~'.$j['theory_training'].'~!~'.$j['training_date'].'~!~'.$j['training_end_date'].'~!~'.$j['theory_remarks'].'~!~'.$j['spdate_hired'].'&quot;)">';
 				echo '<td>'.$c.'</td>';
 				echo '<td>'.$j['batch_no'].'</td>';
 				echo '<td>'.$j['provider'].'</td>';
@@ -25,6 +25,7 @@ if ($method == 'fetch_training_record') {
 				echo '<td>'.$j['gender'].'</td>';
 				echo '<td>'.$j['department'].'</td>';	
 				echo '<td>'.$j['position'].'</td>';
+				echo '<td>'.$j['spdate_hired'].'</td>';
 				echo '<td>'.$j['date_hired'].'</td>';
 				echo '<td>'.$j['theory_training'].'</td>';
 				echo '<td>'.$j['training_date'].'</td>';
@@ -56,8 +57,9 @@ if ($method == 'update_ptt_record') {
 	$training_date  = $_POST['training_date'];
 	$training_end_date  = $_POST['training_end_date'];
 	$theory_remarks  = $_POST['theory_remarks'];
+	$spdate_hired = $_POST['spdate_hired'];
 
-	$update = "UPDATE etrs_training_record SET batch_no = '$batch_no', provider = '$provider', employee_num = '$employee_num', maiden_name = '$maiden_name', full_name = '$full_name', gender = '$gender', department = '$department', position = '$position', date_hired = '$date_hired' , theory_training = '$theory_training', training_date = '$training_date', training_end_date = '$training_end_date', theory_remarks = '$theory_remarks' WHERE id = '$id'";
+	$update = "UPDATE etrs_training_record SET batch_no = '$batch_no', provider = '$provider', employee_num = '$employee_num', maiden_name = '$maiden_name', full_name = '$full_name', gender = '$gender', department = '$department', position = '$position', date_hired = '$date_hired' , theory_training = '$theory_training', training_date = '$training_date', training_end_date = '$training_end_date', theory_remarks = '$theory_remarks', spdate_hired = '$spdate_hired' WHERE id = '$id'";
 	$stmt = $conn->prepare($update);
 	if ($stmt->execute()) {
 		echo 'success';

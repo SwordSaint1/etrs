@@ -30,7 +30,7 @@
 
            <div class="row">
                 <div class="col-3">
-                    <span> Full Name:   </span> <input type="text" id="full_name_ptt_update" class="form-control-lg" autocomplete="OFF" class="noSpace">
+                    <span> Full Name:   </span> <input type="text" id="full_name_ptt_update" class="form-control" autocomplete="OFF" class="noSpace">
                 </div>
                 <div class="col-3">
                       <span> Gender:   </span>
@@ -52,7 +52,11 @@
            </div>
            <div class="row">
              <div class="col-3">
-                     <span>Date Hired:</span>
+                     <span>SP Date Hired:</span>
+                    <input type="date" name="date_hired" id="spdate_hired_ptt_update" class="form-control">
+                </div>
+             <div class="col-3">
+                     <span>FALP Date Hired:</span>
                     <input type="date" name="date_hired" id="date_hired_ptt_update" class="form-control">
                 </div>
              <div class="col-3">
@@ -73,14 +77,15 @@
                     <input type="date" name="date_hired" id="training_date_ptt_update" class="form-control">
                 </div>
                
-                <div class="col-3">
-                    <span>Training End Date:</span>
-                    <input type="date" name="date_hired" id="training_end_date_ptt_update" class="form-control">
-                </div>
                
                
            </div>
            <div class="row">
+             <div class="col-3">
+                    <span>Training End Date:</span>
+                    <input type="date" name="date_hired" id="training_end_date_ptt_update" class="form-control">
+                </div>
+               
                 <div class="col-3">
                  <span> Remarks:   </span> <input type="text" id="theory_remarks_ptt_update" class="form-control" autocomplete="OFF" class="noSpace">
                 </div>

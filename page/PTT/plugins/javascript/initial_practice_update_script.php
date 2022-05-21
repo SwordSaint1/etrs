@@ -71,6 +71,7 @@ const update_initial_practice_record =()=>{
     var initial_practice_status = document.getElementById('initial_practice_status_update').value;
     var initial_practice_training_date = document.getElementById('initial_practice_training_date_update').value;
     var initial_practice_training_end_date = document.getElementById('initial_practice_training_end_date_update').value;
+    var initial_practice_remarks = document.getElementById('initial_practice_remarks').value;
      $.ajax({
         url: '../../process/ptt/initial_practice.php',
         type: 'POST', 
@@ -82,7 +83,8 @@ const update_initial_practice_record =()=>{
             initial_practice_process:initial_practice_process,
             initial_practice_status:initial_practice_status,
             initial_practice_training_date:initial_practice_training_date,
-            initial_practice_training_end_date:initial_practice_training_end_date
+            initial_practice_training_end_date:initial_practice_training_end_date,
+            initial_practice_remarks:initial_practice_remarks
         },success:function(x){
 
         if (x == 'Training Record Already Exist!') {

@@ -15,21 +15,22 @@
       </div>
       <div class="modal-body">
            <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                         <input type="hidden" name="initial_id" id="initial_practice_id">
                      <span>Batch No:   </span> <input type="text" id="initial_practice_batch_no_update" class="form-control"   class="noSpace">
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                      <span> Employee No:   </span> <input type="text" id="emp_id_update_initial_practice" class="form-control" autocomplete="OFF" class="noSpace">
                 </div>
-                 <div class="col-4">
+                 <div class="col-3">
                      <span> Gender:   </span> <input type="text" id="initial_practice_gender_update" class="form-control"  autocomplete="OFF" class="noSpace">
-                </div>                
+                </div>  
+                <div class="col-3">
+                     <span>Full Name:</span> <input type="text" name="initial_full_name_update" id="initial_practice_full_name_update" class="form-control">
+                 </div>              
            </div>
            <div class="row">
-                 <div class="col-3">
-                     <span>Full Name:</span> <input type="text" name="initial_full_name_update" id="initial_practice_full_name_update" class="form-control">
-                 </div>
+                 
                  <div class="col-3">
                      <span>Department:</span> <input type="text" name="initial_department_update" id="initial_practice_department_update" class="form-control">
                  </div>
@@ -38,6 +39,9 @@
                  </div>
                  <div class="col-3">
                      <span>Date Hired:</span> <input type="text" name="initial_date_hired_update" id="initial_practice_date_hired_update" class="form-control">
+                 </div>
+                 <div class="col-3">
+                     <span>Remarks:</span><input type="text" name="initial_practice_remarks" id="initial_practice_remarks" class="form-control">
                  </div>
            </div>  
            <div class="row">

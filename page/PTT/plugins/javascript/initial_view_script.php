@@ -39,6 +39,7 @@ const get_for_update =(param)=>{
     var initial_status = string[9];
     var initial_training_date = string[10];
     var initial_training_end_date = string[11];
+    var initial_remarks = string[12];
 
 document.getElementById('initial_id_reupdate').value = id;
 document.getElementById('initial_batch_no_reupdate').value = batch_no;
@@ -52,6 +53,7 @@ document.getElementById('initial_process_reupdate').value = initial_process;
 document.getElementById('initial_status_reupdate').value = initial_status;
 document.getElementById('initial_training_date_reupdate').value = initial_training_date;
 document.getElementById('initial_training_end_date_reupdate').value = initial_training_end_date;
+document.getElementById('initial_remarks_reupdate').value = initial_remarks;
 }
 
 
@@ -62,6 +64,7 @@ const reupdate_initial_record =()=>{
     var initial_status = document.getElementById('initial_status_reupdate').value;
     var initial_training_date = document.getElementById('initial_training_date_reupdate').value;
     var initial_training_end_date = document.getElementById('initial_training_end_date_reupdate').value;
+    var initial_remarks = document.getElementById('initial_remarks_reupdate').value;
     console.log(id);
      $.ajax({
         url: '../../process/ptt/initial_record.php',
@@ -74,7 +77,8 @@ const reupdate_initial_record =()=>{
             initial_process:initial_process,
             initial_status:initial_status,
             initial_training_date:initial_training_date,
-            initial_training_end_date:initial_training_end_date
+            initial_training_end_date:initial_training_end_date,
+            initial_remarks:initial_remarks
         },success:function(x){
             if (x == 'success') {
                swal('Success',x,'success');

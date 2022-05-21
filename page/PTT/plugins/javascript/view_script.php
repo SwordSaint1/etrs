@@ -21,7 +21,7 @@ const load_theory_training_records =()=>{
                       $('#spinner').fadeOut(function(){                       
                    });
                 }
-    });
+    }); 
 }
 
 function export_training_records(table_id, separator = ',') {
@@ -69,6 +69,7 @@ const get_training_record_ptt =(param)=>{
     var training_date = string[11];
     var training_end_date = string[12];
     var theory_remarks = string[13];
+    var spdate_hired = string[14];
 
 document.getElementById('id_ptt_update').value = id;
 document.getElementById('batch_no_ptt_update').value = batch_no;
@@ -84,6 +85,7 @@ document.getElementById('theory_training_ptt_update').value = theory_training;
 document.getElementById('training_date_ptt_update').value = training_date;
 document.getElementById('training_end_date_ptt_update').value = training_end_date;
 document.getElementById('theory_remarks_ptt_update').value = theory_remarks;
+document.getElementById('spdate_hired_ptt_update').value = spdate_hired;
 }	
 
 const ptt_update =()=>{
@@ -102,7 +104,7 @@ var theory_training = document.getElementById('theory_training_ptt_update').valu
 var training_date = document.getElementById('training_date_ptt_update').value;
 var training_end_date = document.getElementById('training_end_date_ptt_update').value;
 var theory_remarks = document.getElementById('theory_remarks_ptt_update').value;
-
+var spdate_hired = document.getElementById('spdate_hired_ptt_update').value;
     $.ajax({
           url: '../../process/ptt/view_record.php',
                 type: 'POST',
@@ -122,7 +124,8 @@ var theory_remarks = document.getElementById('theory_remarks_ptt_update').value;
                     theory_training:theory_training,
                     training_date:training_date,
                     training_end_date:training_end_date,
-                    theory_remarks:theory_remarks
+                    theory_remarks:theory_remarks,
+                    spdate_hired:spdate_hired
                 },success:function(response){
                      
                     if (response == 'success') {

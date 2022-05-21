@@ -40,6 +40,7 @@ const get_for_update_initial_practice =(param)=>{
     var initial_practice_status = string[9];
     var initial_practice_training_date = string[10];
      var initial_practice_training_end_date = string[11];
+     var initial_practice_remarks = string[12];
 
 document.getElementById('initial_practice_id_reupdate').value = id;
 document.getElementById('initial_practice_batch_no_reupdate').value = batch_no;
@@ -53,6 +54,7 @@ document.getElementById('initial_practice_process_reupdate').value = initial_pra
 document.getElementById('initial_practice_status_reupdate').value = initial_practice_status;
 document.getElementById('initial_practice_training_date_reupdate').value = initial_practice_training_date;
 document.getElementById('initial_practice_training_end_date_reupdate').value = initial_practice_training_end_date;
+document.getElementById('initial_practice_remarks_reupdate').value= initial_practice_remarks;
 
 }
 
@@ -64,6 +66,7 @@ const reupdate_initial_practice_record =()=>{
     var initial_practice_status = document.getElementById('initial_practice_status_reupdate').value;
     var initial_practice_training_date = document.getElementById('initial_practice_training_date_reupdate').value;
     var initial_practice_training_end_date = document.getElementById('initial_practice_training_end_date_reupdate').value;
+    var initial_practice_remarks = document.getElementById('initial_practice_remarks_reupdate').value;
      $.ajax({
         url: '../../process/ptt/initial_practice.php',
         type: 'POST', 
@@ -75,7 +78,8 @@ const reupdate_initial_practice_record =()=>{
             initial_practice_process:initial_practice_process,
             initial_practice_status:initial_practice_status,
             initial_practice_training_date:initial_practice_training_date,
-            initial_practice_training_end_date:initial_practice_training_end_date
+            initial_practice_training_end_date:initial_practice_training_end_date,
+            initial_practice_remarks:initial_practice_remarks
         },success:function(x){
             if (x == 'success') {
                swal('Success',x,'success');

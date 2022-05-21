@@ -39,7 +39,7 @@
                          $datesss = new DateTime($final_training_end_date);
                         $training_end_dates = date_format($datesss, "Y-m-d");
                           $final_process = str_replace(' ', '_', $final_process);
-                        $update = "UPDATE etrs_final SET emp_id = '$emp_id', final_process = '$final_process', final_status = '$final_status', final_training_date = '$training_dates', final_registration_code = '$itc', final_training_end_date = '$training_end_dates' WHERE id ='$id' AND final_process = '$final_process'";
+                        $update = "UPDATE etrs_final SET emp_id = '$emp_id', final_process = '$final_process', final_status = '$final_status', final_training_date = '$training_dates', final_registration_code = '$itc', final_training_ends_dates = '$training_end_dates' WHERE id ='$id' AND final_process = '$final_process'";
                         $stmt = $conn->prepare($update);
                         if($stmt->execute()){
                             $error = 0;
@@ -55,7 +55,7 @@
                         $training_end_dates = date_format($datesss, "Y-m-d");
 
                            $final_process = str_replace(' ', '_', $final_process);
-                        $insert = "INSERT INTO etrs_final (`emp_id`,`final_process`,`final_status`,`final_training_date`,`final_registration_code`,`final_training_end_date`) VALUES ('$emp_id','$final_process','$final_status','$training_dates','$itc','$training_end_dates')";
+                        $insert = "INSERT INTO etrs_final (`emp_id`,`final_process`,`final_status`,`final_training_date`,`final_registration_code`,`final_training_ends_dates`) VALUES ('$emp_id','$final_process','$final_status','$training_dates','$itc','$training_end_dates')";
                         $stmt = $conn->prepare($insert);
                         if($stmt->execute()){
                             $error = 0;

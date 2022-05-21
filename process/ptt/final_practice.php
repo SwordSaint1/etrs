@@ -48,6 +48,7 @@ if ($method == 'update_final_practice_record_data') {
 	$final_practice_status = $_POST['final_practice_status'];
 	$final_practice_training_date = $_POST['final_practice_training_date'];
 	$final_practice_training_end_date = $_POST['final_practice_training_end_date'];
+	$final_practice_remarks = $_POST['final_practice_remarks'];
 
 	$check = "SELECT id FROM etrs_final_practice WHERE emp_id = '$emp_id' AND final_practice_process = '$final_practice_process' AND final_practice_status = 'Passed'";
 
@@ -58,7 +59,7 @@ if ($method == 'update_final_practice_record_data') {
 		echo 'Training Record Already Exist!';
 	
 	}else{
-		$insert = "INSERT INTO etrs_final_practice (`emp_id`,`final_practice_process`,`final_practice_status`,`final_practice_training_date`,`final_practice_registration_code`,`final_practice_training_end_date`) VALUES ('$emp_id','$final_practice_process','$final_practice_status','$final_practice_training_date','$final_practice_registration_code', '$final_practice_training_end_date')";
+		$insert = "INSERT INTO etrs_final_practice (`emp_id`,`final_practice_process`,`final_practice_status`,`final_practice_training_date`,`final_practice_registration_code`,`final_practice_training_end_date`,`final_practice_remarks`) VALUES ('$emp_id','$final_practice_process','$final_practice_status','$final_practice_training_date','$final_practice_registration_code', '$final_practice_training_end_date','$final_practice_remarks')";
 		$stmt= $conn->prepare($insert);
 		if ($stmt->execute()) {
 
@@ -82,14 +83,14 @@ if ($method == 'fetch_final_practice_view') {
 	$c = 0;
 
 	$select = "SELECT etrs_training_record.date_hired,etrs_final_practice.id,etrs_training_record.batch_no,etrs_training_record.employee_num,etrs_training_record.full_name,etrs_training_record.gender,etrs_training_record.department,etrs_training_record.position,
-	etrs_final_practice.final_practice_process, etrs_final_practice.final_practice_status, etrs_final_practice.final_practice_training_date, etrs_final_practice.final_practice_registration_code,etrs_final_practice.final_practice_training_end_date FROM etrs_training_record LEFT JOIN etrs_final_practice ON etrs_training_record.employee_num = etrs_final_practice.emp_id WHERE etrs_final_practice.final_practice_process != '' AND etrs_training_record.batch_no LIKE '$batch_no%' AND etrs_final_practice.emp_id LIKE '$emp_id%' AND etrs_training_record.full_name LIKE '$full_name%' AND etrs_final_practice.final_practice_process LIKE '$eprocess%'";
+	etrs_final_practice.final_practice_process, etrs_final_practice.final_practice_status, etrs_final_practice.final_practice_training_date, etrs_final_practice.final_practice_registration_code,etrs_final_practice.final_practice_training_end_date,etrs_final_practice.final_practice_remarks FROM etrs_training_record LEFT JOIN etrs_final_practice ON etrs_training_record.employee_num = etrs_final_practice.emp_id WHERE etrs_final_practice.final_practice_process != '' AND etrs_training_record.batch_no LIKE '$batch_no%' AND etrs_final_practice.emp_id LIKE '$emp_id%' AND etrs_training_record.full_name LIKE '$full_name%' AND etrs_final_practice.final_practice_process LIKE '$eprocess%'";
 	$stmt = $conn->prepare($select);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
 		foreach($stmt->fetchALL() as $j){
 			$c++;
 
-			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#final_practice_for_update" onclick="get_for_update_final_practice(&quot;'.$j['id'].'~!~'.$j['batch_no'].'~!~'.$j['employee_num'].'~!~'.$j['gender'].'~!~'.$j['full_name'].'~!~'.$j['department'].'~!~'.$j['position'].'~!~'.$j['date_hired'].'~!~'.$j['final_practice_process'].'~!~'.$j['final_practice_status'].'~!~'.$j['final_practice_training_date'].'~!~'.$j['final_practice_training_end_date'].'&quot;)" >';
+			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#final_practice_for_update" onclick="get_for_update_final_practice(&quot;'.$j['id'].'~!~'.$j['batch_no'].'~!~'.$j['employee_num'].'~!~'.$j['gender'].'~!~'.$j['full_name'].'~!~'.$j['department'].'~!~'.$j['position'].'~!~'.$j['date_hired'].'~!~'.$j['final_practice_process'].'~!~'.$j['final_practice_status'].'~!~'.$j['final_practice_training_date'].'~!~'.$j['final_practice_training_end_date'].'~!~'.$j['final_practice_remarks'].'&quot;)" >';
 				echo '<td>'.$c.'</td>';
 				echo '<td>'.$j['batch_no'].'</td>';
 				echo '<td>'.$j['employee_num'].'</td>';
@@ -101,6 +102,7 @@ if ($method == 'fetch_final_practice_view') {
 				echo '<td>'.$j['final_practice_status'].'</td>';		
 				echo '<td>'.$j['final_practice_training_date'].'</td>';	
 				echo '<td>'.$j['final_practice_training_end_date'].'</td>';	
+				echo '<td>'.$j['final_practice_remarks'].'</td>';	
 			echo '</tr>';
 		}
 	}else{
@@ -117,6 +119,7 @@ if ($method == 'update_final_practice') {
 	$final_practice_status = $_POST['final_practice_status'];
 	$final_practice_training_date = $_POST['final_practice_training_date'];
 	$final_practice_training_end_date = $_POST['final_practice_training_end_date'];
+	$final_practice_remarks = $_POST['final_practice_remarks'];
 	$check = "SELECT id FROM etrs_final_practice WHERE emp_id = '$emp_id' AND final_practice_process = '$final_practice_process' AND final_practice_status = '$final_practice_status'";
 	$stmt = $conn->prepare($check);
 	$stmt->execute();
@@ -124,7 +127,7 @@ if ($method == 'update_final_practice') {
 		echo 'Duplicate Record';
 	}else{
 
-	$update ="UPDATE etrs_final_practice SET final_practice_process = '$final_practice_process', final_practice_status = '$final_practice_status', final_practice_training_date = '$final_practice_training_date', final_practice_training_end_date = '$final_practice_training_end_date' WHERE id = '$id'";
+	$update ="UPDATE etrs_final_practice SET final_practice_process = '$final_practice_process', final_practice_status = '$final_practice_status', final_practice_training_date = '$final_practice_training_date', final_practice_training_end_date = '$final_practice_training_end_date', final_practice_remarks = '$final_practice_remarks' WHERE id = '$id'";
 	$stmt = $conn->prepare($update);
 	if($stmt->execute()){
 		echo 'success';

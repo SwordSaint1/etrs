@@ -68,10 +68,11 @@
                     <th>SP ID Number </th>
                     <th>FALP ID Number </th>
                     <th>Maiden Name </th>
-                    <th>Full Name </th>
+                    <th>Full Name (Change Status)</th>
                     <th>Gender </th>
                     <th>Department </th>
                     <th>Position </th>
+                    <th>SP Date Hired </th>
                     <th>Date Hired </th>
                     <th>Theory Training Status </th>
                     <th>Training Start Date </th>

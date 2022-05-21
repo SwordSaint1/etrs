@@ -72,6 +72,7 @@ const update_initial_record =()=>{
     var initial_status = document.getElementById('initial_status_update').value;
     var initial_training_date = document.getElementById('initial_training_date_update').value;
     var initial_training_end_date_updates = document.getElementById('initial_training_ends_date_updates').value;
+    var initial_remarks = document.getElementById('initial_remarks').value;
      $.ajax({
         url: '../../process/ptt/initial_record.php',
         type: 'POST', 
@@ -83,7 +84,8 @@ const update_initial_record =()=>{
             initial_process:initial_process,
             initial_status:initial_status,
             initial_training_date:initial_training_date,
-            initial_training_end_date_updates:initial_training_end_date_updates
+            initial_training_end_date_updates:initial_training_end_date_updates,
+            initial_remarks:initial_remarks
         },success:function(x){
 
         if (x == 'Training Record Already Exist!') {

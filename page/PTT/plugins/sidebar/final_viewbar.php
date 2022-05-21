@@ -125,7 +125,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon  fas fa-book nav-icon"></i>
               <p>
-                Special Process
+                Special Batch Training
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

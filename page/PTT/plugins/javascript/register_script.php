@@ -32,7 +32,7 @@ const save_training_record =()=> {
     var theory_remarks = document.getElementById('theory_remarks').value;
     var training_end_date = document.getElementById('training_end_date').value;
     var provider = document.getElementById('provider').value;
-
+    var spdate_hired = document.getElementById('spdate_hired').value;
    
         if(batch_no == ''){  
         swal('Notification', 'Please Enter Batch No', 'info');
@@ -78,7 +78,8 @@ else{
             date_hired:date_hired,
             theory_remarks:theory_remarks,
             training_end_date:training_end_date,
-            provider:provider
+            provider:provider,
+            spdate_hired:spdate_hired
         },success:function(x){
 
         if (x == 'Training Record Already Exist!') {

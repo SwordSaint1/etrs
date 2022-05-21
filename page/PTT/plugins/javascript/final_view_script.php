@@ -39,6 +39,7 @@ const get_for_update_final =(param)=>{
     var final_status = string[9];
     var final_training_date = string[10];
     var final_training_ends_dates = string[11];
+    var final_remarks = string[12];
 
 document.getElementById('final_id_reupdate').value = id;
 document.getElementById('final_batch_no_reupdate').value = batch_no;
@@ -52,6 +53,7 @@ document.getElementById('final_process_reupdate').value = final_process;
 document.getElementById('final_status_reupdate').value = final_status;
 document.getElementById('final_training_date_reupdate').value = final_training_date;
 document.getElementById('final_training_end_dates_reupdatess').value = final_training_ends_dates;
+document.getElementById('final_remarks_reupdate').value = final_remarks;
 }
 
 
@@ -62,6 +64,7 @@ const reupdate_final_record =()=>{
     var final_status = document.getElementById('final_status_reupdate').value;
     var final_training_date = document.getElementById('final_training_date_reupdate').value;
     var final_training_ends_dates = document.getElementById('final_training_end_dates_reupdatess').value;
+    var final_remarks = document.getElementById('final_remarks_reupdate').value;
      $.ajax({
         url: '../../process/ptt/final_record.php',
         type: 'POST', 
@@ -73,7 +76,8 @@ const reupdate_final_record =()=>{
             final_process:final_process,
             final_status:final_status,
             final_training_date:final_training_date,
-            final_training_ends_dates:final_training_ends_dates
+            final_training_ends_dates:final_training_ends_dates,
+            final_remarks:final_remarks
         },success:function(x){
             // console.log(x);
 

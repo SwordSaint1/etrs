@@ -21,14 +21,15 @@
                     $gender = $line[5];
                     $department = $line[6];
                     $position = $line[7];
-                    $date_hired = $line[8];
-                    $theory_training = $line[9];
-                    $training_date = $line[10];
-                    $training_end_date = $line[11];
-                    $theory_remarks = $line[12];
+                    $spdate_hired = $line[8];
+                    $date_hired = $line[9];
+                    $theory_training = $line[10];
+                    $training_date = $line[11];
+                    $training_end_date = $line[12];
+                    $theory_remarks = $line[13];
                   
                     // CHECK IF BLANK DATA
-                    if($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[4] == '' || $line[5] == '' || $line[6] == '' || $line[7] == '' || $line[8] == '' || $line[9] == '' || $line[10] == '' || $line[11] == '' || $line[12] == ''){
+                    if($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[4] == '' || $line[5] == '' || $line[6] == '' || $line[7] == '' || $line[8] == '' || $line[9] == '' || $line[10] == '' || $line[11] == '' || $line[12] == '' || $line[13] == ''){
                         // IF BLANK DETECTED ERROR += 1
                         $error = $error + 1;
                     }else{
@@ -49,10 +50,12 @@
 
                         $datess = new DateTime($date_hired);
                         $date_hireds = date_format($datess, "Y-m-d");
-                        
-                        // $update = "UPDATE etrs_training_record SET batch_no = '$batch_no', employee_num = '$employee_num', gender = '$gender', full_name = '$full_name', department = '$department', position = '$position', theory_training = '$theory_training', training_date = '$training_dates', date_hired = '$date_hireds', theory_remarks = '$theory_remarks', registration_code = '$tc' WHERE id ='$id'";
 
-                        $update = "UPDATE etrs_training_record SET batch_no = '$batch_no', provider = '$provider', employee_num = '$employee_num',maiden_name = '$maiden_name', full_name = '$full_name', gender = '$gender', department = '$department', position = '$position', date_hired = '$date_hireds', theory_training = '$theory_training', training_date = '$training_dates', training_end_date = '$training_end_dates', theory_remarks = '$theory_remarks', registration_code = '$tc' WHERE id = '$id' ";
+                        $datesssss = new DateTime($spdate_hired);
+                        $spdates = date_format($datesssss, "Y-m-d");
+                        
+                       
+                        $update = "UPDATE etrs_training_record SET batch_no = '$batch_no', provider = '$provider', employee_num = '$employee_num',maiden_name = '$maiden_name', full_name = '$full_name', gender = '$gender', department = '$department', position = '$position', date_hired = '$date_hireds', theory_training = '$theory_training', training_date = '$training_dates', training_end_date = '$training_end_dates', theory_remarks = '$theory_remarks', registration_code = '$tc', spdate_hired = '$spdates' WHERE id = '$id' ";
 
                         $stmt = $conn->prepare($update);
                         if($stmt->execute()){
@@ -71,9 +74,12 @@
                         $datesss = new DateTime($training_end_date);
                         $training_end_dates = date_format($datesss, "Y-m-d");
 
-                        // $insert = "INSERT INTO etrs_training_record (`batch_no`,`employee_num`,`gender`,`full_name`,`department`,`position`,`theory_training`,`training_date`,`theory_remarks`,`registration_code`,`date_hired`) VALUES ('$batch_no','$employee_num','$gender','$full_name','$department','$position','$theory_training','$training_dates','$theory_remarks','$tc','$date_hireds')";
+                          $datesssss = new DateTime($spdate_hired);
+                        $spdates = date_format($datesssss, "Y-m-d");
 
-                        $insert = "INSERT INTO etrs_training_record (`batch_no`,`provider`,`employee_num`,`maiden_name`,`full_name`,`gender`,`department`,`position`,`date_hired`,`theory_training`,`training_date`,`training_end_date`,`theory_remarks`) VALUES ('$batch_no','$provider','$employee_num','$maiden_name','$full_name','$gender','$department','$position','$date_hireds','$theory_training','$training_dates','$training_end_dates','$theory_remarks')";
+                       
+
+                        $insert = "INSERT INTO etrs_training_record (`batch_no`,`provider`,`employee_num`,`maiden_name`,`full_name`,`gender`,`department`,`position`,`date_hired`,`theory_training`,`training_date`,`training_end_date`,`theory_remarks`,`spdate_hired`) VALUES ('$batch_no','$provider','$employee_num','$maiden_name','$full_name','$gender','$department','$position','$date_hireds','$theory_training','$training_dates','$training_end_dates','$theory_remarks','$spdates')";
 
                         $stmt = $conn->prepare($insert);
                         if($stmt->execute()){

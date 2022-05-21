@@ -48,6 +48,7 @@ if ($method == 'update_initial_record_data') {
 	$initial_status = $_POST['initial_status'];
 	$initial_training_date = $_POST['initial_training_date'];
 	$initial_training_end_date_updates = $_POST['initial_training_end_date_updates'];
+	$initial_remarks = $_POST['initial_remarks'];
 
 	$check = "SELECT id FROM etrs_initial WHERE emp_id = '$emp_id' AND initial_process = '$initial_process' AND initial_status = 'Passed'";
 
@@ -58,7 +59,7 @@ if ($method == 'update_initial_record_data') {
 		echo 'Training Record Already Exist!';
 	
 	}else{
-		$insert = "INSERT INTO etrs_initial (`emp_id`,`initial_process`,`initial_status`,`initial_training_date`,`initial_registration_code`,`initial_training_end_dates`) VALUES ('$emp_id','$initial_process','$initial_status','$initial_training_date','$initial_registration_code','$initial_training_end_date_updates')";
+		$insert = "INSERT INTO etrs_initial (`emp_id`,`initial_process`,`initial_status`,`initial_training_date`,`initial_registration_code`,`initial_training_end_dates`,`initial_remarks`) VALUES ('$emp_id','$initial_process','$initial_status','$initial_training_date','$initial_registration_code','$initial_training_end_date_updates','$initial_remarks')";
 		$stmt= $conn->prepare($insert);
 		if ($stmt->execute()) {
 
@@ -81,14 +82,14 @@ if ($method == 'fetch_intial') {
 	$eprocess = $_POST['eprocess'];
 	$c = 0;
 
-	$select = "SELECT etrs_training_record.date_hired,etrs_initial.id,etrs_training_record.batch_no,etrs_training_record.employee_num,etrs_training_record.full_name,etrs_training_record.gender,etrs_training_record.department,etrs_training_record.position,etrs_initial.initial_process,etrs_initial.initial_status,etrs_initial.initial_training_date,etrs_initial.initial_training_end_dates FROM etrs_training_record LEFT JOIN etrs_initial ON etrs_training_record.employee_num = etrs_initial.emp_id WHERE etrs_initial.initial_process != '' AND etrs_training_record.batch_no LIKE '$batch_no%' AND etrs_initial.emp_id LIKE '$emp_id%' AND etrs_training_record.full_name LIKE '$full_name%' AND etrs_initial.initial_process LIKE '$eprocess%'";
+	$select = "SELECT etrs_training_record.date_hired,etrs_initial.id,etrs_training_record.batch_no,etrs_training_record.employee_num,etrs_training_record.full_name,etrs_training_record.gender,etrs_training_record.department,etrs_training_record.position,etrs_initial.initial_process,etrs_initial.initial_status,etrs_initial.initial_training_date,etrs_initial.initial_training_end_dates,etrs_initial.initial_remarks FROM etrs_training_record LEFT JOIN etrs_initial ON etrs_training_record.employee_num = etrs_initial.emp_id WHERE etrs_initial.initial_process != '' AND etrs_training_record.batch_no LIKE '$batch_no%' AND etrs_initial.emp_id LIKE '$emp_id%' AND etrs_training_record.full_name LIKE '$full_name%' AND etrs_initial.initial_process LIKE '$eprocess%'";
 	$stmt = $conn->prepare($select);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
 		foreach($stmt->fetchALL() as $j){
 			$c++;
 
-			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#reupdate_record" onclick="get_for_update(&quot;'.$j['id'].'~!~'.$j['batch_no'].'~!~'.$j['employee_num'].'~!~'.$j['gender'].'~!~'.$j['full_name'].'~!~'.$j['department'].'~!~'.$j['position'].'~!~'.$j['date_hired'].'~!~'.$j['initial_process'].'~!~'.$j['initial_status'].'~!~'.$j['initial_training_date'].'~!~'.$j['initial_training_end_dates'].'&quot;)" >';
+			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#reupdate_record" onclick="get_for_update(&quot;'.$j['id'].'~!~'.$j['batch_no'].'~!~'.$j['employee_num'].'~!~'.$j['gender'].'~!~'.$j['full_name'].'~!~'.$j['department'].'~!~'.$j['position'].'~!~'.$j['date_hired'].'~!~'.$j['initial_process'].'~!~'.$j['initial_status'].'~!~'.$j['initial_training_date'].'~!~'.$j['initial_training_end_dates'].'~!~'.$j['initial_remarks'].'&quot;)" >';
 				echo '<td>'.$c.'</td>';
 				echo '<td>'.$j['batch_no'].'</td>';
 				echo '<td>'.$j['employee_num'].'</td>';
@@ -99,7 +100,8 @@ if ($method == 'fetch_intial') {
 				echo '<td>'.$j['initial_process'].'</td>';	
 				echo '<td>'.$j['initial_status'].'</td>';		
 				echo '<td>'.$j['initial_training_date'].'</td>';
-				echo '<td>'.$j['initial_training_end_dates'].'</td>';	
+				echo '<td>'.$j['initial_training_end_dates'].'</td>';
+				echo '<td>'.$j['initial_remarks'].'</td>';	
 			echo '</tr>';
 		}
 	}else{
@@ -116,6 +118,7 @@ if ($method == 'update_initial') {
 	$initial_status = $_POST['initial_status'];
 	$initial_training_date = $_POST['initial_training_date'];
 	$initial_training_end_date = $_POST['initial_training_end_date'];
+	$initial_remarks = $_POST['initial_remarks'];
 
 	$check = "SELECT id FROM etrs_initial WHERE emp_id = '$emp_id' AND initial_process = '$initial_process' AND initial_status = '$initial_status'";
 	$stmt = $conn->prepare($check);
@@ -124,7 +127,7 @@ if ($method == 'update_initial') {
 		echo 'Duplicate Record';
 	}else{
 
-	$update ="UPDATE etrs_initial SET initial_process = '$initial_process', initial_status = '$initial_status', initial_training_date = '$initial_training_date', initial_training_end_dates = '$initial_training_end_date' WHERE id = '$id'";
+	$update ="UPDATE etrs_initial SET initial_process = '$initial_process', initial_status = '$initial_status', initial_training_date = '$initial_training_date', initial_training_end_dates = '$initial_training_end_date', initial_remarks = '$initial_remarks' WHERE id = '$id'";
 	$stmt = $conn->prepare($update);
 	if($stmt->execute()){
 		echo 'success';

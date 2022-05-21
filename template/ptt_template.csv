@@ -1,3 +1,5 @@
-﻿batch no,Sp id number,employee id,maiden name,full name change status,gender,department,position,date hired,theory training status,training start date,training end date,remarks
-396,N/A,21-07087,N/A,"Buendia, JJ",Male,IT,Associate,8/4/2022,Passed,8/6/2022,8/6/2022,sample
-395,N/A,21-07099,TRY,Tintin,Female,TRY,Associate,5/12/2022,Passed,5/12/2022,5/12/2022,sample
+﻿batch no,Sp id number,employee id,"Full Name 
+(change status)","Full Name 
+(maiden name)",gender,department,position,sp date hired,falp date hired,theory training status,training start date,training end date,remarks
+396,N/A,21-07087,N/A,"Buendia, JJ",Male,IT,Associate,8/4/2022,8/4/2022,Passed,8/6/2022,8/6/2022,sample
+395,N/A,21-07099,TRY,Tintin,Female,TRY,Associate,8/4/2022,5/12/2022,Passed,5/12/2022,5/12/2022,sample

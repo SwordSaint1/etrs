@@ -72,12 +72,19 @@
                     <input type="date" name="date_hired" id="training_end_date" class="form-control">
                 </div>
                  <div class="col-3">
-                   <span>Date Hired:</span>
-                    <input type="date" name="date_hired" id="date_hired" class="form-control">
+                   <span>SP Date Hired:</span>
+                    <input type="date" name="spdate_hired" id="spdate_hired" class="form-control">
                 </div>
                 <div class="col-3">
+                   <span>FALP Date Hired:</span>
+                    <input type="date" name="date_hired" id="date_hired" class="form-control">
+                </div>
+                      
+           </div>
+           <div class="row">
+                 <div class="col-3">
                      <span> Remarks:   </span> <input type="text" id="theory_remarks" class="form-control" autocomplete="OFF" class="noSpace">
-                </div>            
+                </div>    
            </div>
           
            <br>
@@ -102,7 +109,8 @@
                     <th>Gender</th>
                     <th>Department</th>
                     <th>Position</th>
-                    <th>Date Hired</th>
+                    <th>SP Date Hired</th>
+                    <th>FALP Date Hired</th>
                     <th>Theory Training Status</th>
                     <th>Training Start Date</th>
                     <th>Training End Date</th>

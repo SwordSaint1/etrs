@@ -113,24 +113,18 @@
               <div class="card-header">
                 <h3 class="card-title">
 
-                  <div class="row">
-                      <div class="col-6">
-                        <label>Employee No:</label><input type="text" name="emp_num_view" id="emp_num_view"  class="form-control">
-                      </div>
-                       <div class="col-6">
-                        <label>Full Name:</label><input type="text" name="fname_view" id="fname_view"  class="form-control">
-                      </div>
-                       <div class="col-4">
-                 <!--        <label>Select Training Type:</label>
-                    <select name="" id="" class="form-control">
-                      <option value="">Select Training Type </option>
-                      <option value="">Theory Training </option>
-                      <option value="">Initial Training </option>
-                      <option value="">Final Training </option>
-                      <option value="">Initial Special Process Training </option>
-                      <option value="">Final Special Process Training </option>
-                    </select> -->
-                      </div>
+                     <div class="row">
+                <table>
+                  <tr>
+                  <th><label>Batch  No:</label><input type="text" name="batch_no_viewer"  id="batch_no_viewer" class="form-control"></th>
+                    <th></th>
+                  <th><label>Employee No:</label><input type="text" name="emp_num_view" id="emp_num_view"  class="form-control"></th>
+                    <th></th>
+                  <th><label>Full Name:</label><input type="text" name="fname_view" id="fname_view"  class="form-control"></th>
+                  <th><label>Department:</label><input type="text" name="dept_view" id="dept_view"  class="form-control"></th>
+                  </tr>
+                </table>
+                  
                   </div>
 
                 </h3> 
@@ -146,7 +140,7 @@
                     </div>
                   </div>
               <!-- /.card-header -->
-              <div class="card-body table-responsive p-0" style="height: 420px;">
+              <div class="card-body table-responsive p-0" style="height: 500px;">
                 <table class="table table-head-fixed text-nowrap table-hover" id="final_view_training_data">
                 <thead style="text-align:center;">
                      <th>#</th>
@@ -158,7 +152,12 @@
                     <th>Gender </th>
                     <th>Department </th>
                     <th>Position </th>
-                    
+                    <th>SP Date Hired</th>
+                    <th>FALP Date Hired</th>
+                    <th>Theory Training Status</th>
+                    <th>Training Start Date </th>
+                    <th>Training End Date </th>
+                    <th>Remarks</th>
             </thead>
             <tbody id="viewer_training_records" style="text-align:center;"></tbody>
                 </table>
@@ -236,6 +235,8 @@ include 'modals/viewer/status.php';
   const viewer_training_record =()=>{
     var employee_num = document.getElementById('emp_num_view').value;
   var full_name = document.getElementById('fname_view').value;
+  var batch_no = document.getElementById('batch_no_viewer').value;
+  var department = document.getElementById('dept_view').value;
      $.ajax({
       url: 'process/viewer.php',
                 type: 'POST',
@@ -243,7 +244,9 @@ include 'modals/viewer/status.php';
                 data:{
                     method: 'fetch_viewer',
                     employee_num:employee_num,
-                    full_name:full_name
+                    full_name:full_name,
+                    batch_no:batch_no,
+                    department:department
                 },success:function(response){
                    document.getElementById('viewer_training_records').innerHTML = response;
                       
@@ -253,6 +256,7 @@ include 'modals/viewer/status.php';
 
 
 const get_training_record_ptt =(param)=>{
+ 
     var string = param.split('~!~');
     var id = string[0];
     var batch_no = string[1];
@@ -264,9 +268,9 @@ const get_training_record_ptt =(param)=>{
     var department = string[7];
     var position = string[8];
   
-
+ console.log(batch_no);
 document.getElementById('id_viewer').value = id;
-document.getElementById('batch_no_viewer').value = batch_no;
+document.getElementById('batch_no_viewers').value = batch_no;
 document.getElementById('provider_viewer').value = provider;
 document.getElementById('employee_num_viewer').value = employee_num;
 document.getElementById('maiden_name_viewer').value = maiden_name;
@@ -287,7 +291,7 @@ training_taken_sb_final();
 
 const training_taken_initial =()=>{
   var id = document.getElementById('id_viewer').value;
-  var batch_no = document.getElementById('batch_no_viewer').value;
+  var batch_no = document.getElementById('batch_no_viewers').value;
   var provider = document.getElementById('provider_viewer').value;
   var employee_num = document.getElementById('employee_num_viewer').value;
   var maiden_name = document.getElementById('maiden_name_viewer').value;
@@ -352,7 +356,7 @@ const training_taken_initial =()=>{
 
 const training_taken_final =()=>{
   var id = document.getElementById('id_viewer').value;
-  var batch_no = document.getElementById('batch_no_viewer').value;
+  var batch_no = document.getElementById('batch_no_viewers').value;
   var provider = document.getElementById('provider_viewer').value;
   var employee_num = document.getElementById('employee_num_viewer').value;
   var maiden_name = document.getElementById('maiden_name_viewer').value;
@@ -416,7 +420,7 @@ const training_taken_final =()=>{
 
 const training_taken_sb_initial =()=>{
   var id = document.getElementById('id_viewer').value;
-  var batch_no = document.getElementById('batch_no_viewer').value;
+  var batch_no = document.getElementById('batch_no_viewers').value;
   var provider = document.getElementById('provider_viewer').value;
   var employee_num = document.getElementById('employee_num_viewer').value;
   var maiden_name = document.getElementById('maiden_name_viewer').value;
@@ -482,7 +486,7 @@ const training_taken_sb_initial =()=>{
 
 const training_taken_sb_final =()=>{
   var id = document.getElementById('id_viewer').value;
-  var batch_no = document.getElementById('batch_no_viewer').value;
+  var batch_no = document.getElementById('batch_no_viewers').value;
   var provider = document.getElementById('provider_viewer').value;
   var employee_num = document.getElementById('employee_num_viewer').value;
   var maiden_name = document.getElementById('maiden_name_viewer').value;

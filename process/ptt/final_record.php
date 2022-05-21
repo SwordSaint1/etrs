@@ -48,6 +48,7 @@ if ($method == 'update_final_record_data') {
 	$final_status = $_POST['final_status'];
 	$final_training_date = $_POST['final_training_date'];
 	$final_training_end_date_updates = $_POST['final_training_end_date_updates'];
+	$final_remarks = $_POST['final_remarks'];
 
 	$check = "SELECT id FROM etrs_final WHERE emp_id = '$emp_id' AND final_process = '$final_process' AND final_status = 'Passed'";
 
@@ -58,7 +59,7 @@ if ($method == 'update_final_record_data') {
 		echo 'Training Record Already Exist!';
 	
 	}else{
-		$insert = "INSERT INTO etrs_final (`emp_id`,`final_process`,`final_status`,`final_training_date`,`final_registration_code`,`final_training_ends_dates`) VALUES ('$emp_id','$final_process','$final_status','$final_training_date','$final_registration_code','$final_training_end_date_updates')";
+		$insert = "INSERT INTO etrs_final (`emp_id`,`final_process`,`final_status`,`final_training_date`,`final_registration_code`,`final_training_ends_dates`,`final_remarks`) VALUES ('$emp_id','$final_process','$final_status','$final_training_date','$final_registration_code','$final_training_end_date_updates','$final_remarks')";
 		$stmt= $conn->prepare($insert);
 		if ($stmt->execute()) {
 
@@ -80,14 +81,14 @@ if ($method == 'fetch_final') {
 	$eprocess = $_POST['eprocess'];
 	$c = 0;
 
-	$select = "SELECT etrs_training_record.date_hired,etrs_final.id,etrs_training_record.batch_no,etrs_training_record.employee_num,etrs_training_record.full_name,etrs_training_record.gender,etrs_training_record.department,etrs_training_record.position,etrs_final.final_process,etrs_final.final_status,etrs_final.final_training_date,etrs_final.final_training_ends_dates FROM etrs_training_record LEFT JOIN etrs_final ON etrs_training_record.employee_num = etrs_final.emp_id WHERE etrs_final.final_process != '' AND etrs_training_record.batch_no LIKE '$batch_no%' AND etrs_final.emp_id LIKE '$emp_id%' AND etrs_training_record.full_name LIKE '$full_name%' AND etrs_final.final_process LIKE '$eprocess%'";
+	$select = "SELECT etrs_training_record.date_hired,etrs_final.id,etrs_training_record.batch_no,etrs_training_record.employee_num,etrs_training_record.full_name,etrs_training_record.gender,etrs_training_record.department,etrs_training_record.position,etrs_final.final_process,etrs_final.final_status,etrs_final.final_training_date,etrs_final.final_training_ends_dates,etrs_final.final_remarks FROM etrs_training_record LEFT JOIN etrs_final ON etrs_training_record.employee_num = etrs_final.emp_id WHERE etrs_final.final_process != '' AND etrs_training_record.batch_no LIKE '$batch_no%' AND etrs_final.emp_id LIKE '$emp_id%' AND etrs_training_record.full_name LIKE '$full_name%' AND etrs_final.final_process LIKE '$eprocess%'";
 	$stmt = $conn->prepare($select);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
 		foreach($stmt->fetchALL() as $j){
 			$c++;
 
-			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#final_for_update" onclick="get_for_update_final(&quot;'.$j['id'].'~!~'.$j['batch_no'].'~!~'.$j['employee_num'].'~!~'.$j['gender'].'~!~'.$j['full_name'].'~!~'.$j['department'].'~!~'.$j['position'].'~!~'.$j['date_hired'].'~!~'.$j['final_process'].'~!~'.$j['final_status'].'~!~'.$j['final_training_date'].'~!~'.$j['final_training_ends_dates'].'&quot;)" >';
+			echo '<tr style="cursor:pointer;" class="modal-trigger" data-toggle="modal" data-target="#final_for_update" onclick="get_for_update_final(&quot;'.$j['id'].'~!~'.$j['batch_no'].'~!~'.$j['employee_num'].'~!~'.$j['gender'].'~!~'.$j['full_name'].'~!~'.$j['department'].'~!~'.$j['position'].'~!~'.$j['date_hired'].'~!~'.$j['final_process'].'~!~'.$j['final_status'].'~!~'.$j['final_training_date'].'~!~'.$j['final_training_ends_dates'].'~!~'.$j['final_remarks'].'&quot;)" >';
 				echo '<td>'.$c.'</td>';
 				echo '<td>'.$j['batch_no'].'</td>';
 				echo '<td>'.$j['employee_num'].'</td>';
@@ -99,6 +100,7 @@ if ($method == 'fetch_final') {
 				echo '<td>'.$j['final_status'].'</td>';	
 				echo '<td>'.$j['final_training_date'].'</td>';		
 				echo '<td>'.$j['final_training_ends_dates'].'</td>';	
+				echo '<td>'.$j['final_remarks'].'</td>';	
 			echo '</tr>';
 		}
 	}else{
@@ -115,6 +117,7 @@ if ($method == 'update_final') {
 	$final_status = $_POST['final_status'];
 	$final_training_date = $_POST['final_training_date'];
 	$final_training_ends_dates = $_POST['final_training_ends_dates'];
+	$final_remarks = $_POST['final_remarks'];
 
 	$check = "SELECT id FROM etrs_final WHERE emp_id = '$emp_id' AND final_process = '$final_process' AND final_status = '$final_status' ";
 	$stmt = $conn->prepare($check);
@@ -122,7 +125,7 @@ if ($method == 'update_final') {
 	if ($stmt->rowCount() > 0) {
 		echo 'Duplicate Record';
 	}else{
-		$update = "UPDATE etrs_final SET final_process = '$final_process', final_status = '$final_status', final_training_date = '$final_training_date', final_training_ends_dates = '$final_training_ends_dates' WHERE id = '$id'";
+		$update = "UPDATE etrs_final SET final_process = '$final_process', final_status = '$final_status', final_training_date = '$final_training_date', final_training_ends_dates = '$final_training_ends_dates', final_remarks = '$final_remarks' WHERE id = '$id'";
 		$stmt2 = $conn->prepare($update);
 		if($stmt2->execute()){
 			echo 'success';

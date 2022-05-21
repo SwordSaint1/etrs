@@ -6,7 +6,9 @@ if ($method == 'fetch_viewer') {
 	$c = 0;
 	$employee_num = $_POST['employee_num'];
 	$full_name = $_POST['full_name'];
-	$select = "SELECT * FROM etrs_training_record WHERE employee_num LIKE '$employee_num%' AND full_name LIKE '$full_name%'";
+	$batch_no = $_POST['batch_no'];
+	$department = $_POST['department'];
+	$select = "SELECT * FROM etrs_training_record WHERE employee_num LIKE '$employee_num%' AND full_name LIKE '$full_name%' AND batch_no LIKE '$batch_no%' AND department LIKE '$department%'";
 	$stmt = $conn->prepare($select);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
@@ -22,12 +24,17 @@ if ($method == 'fetch_viewer') {
 				echo '<td>'.$j['gender'].'</td>';
 				echo '<td>'.$j['department'].'</td>';	
 				echo '<td>'.$j['position'].'</td>';
-			
+				echo '<td>'.$j['spdate_hired'].'</td>';
+				echo '<td>'.$j['date_hired'].'</td>';
+				echo '<td>'.$j['theory_training'].'</td>';
+				echo '<td>'.$j['training_date'].'</td>';
+				echo '<td>'.$j['training_end_date'].'</td>';
+				echo '<td>'.$j['theory_remarks'].'</td>';
 			echo '</tr>';
 		}
 	}else{
 		echo '<tr>';
-			echo '<td colspan="8" style="text-align:center;">NO RESULT</td>';
+			echo '<td colspan="13" style="text-align:center;">NO RESULT</td>';
 			echo '</tr>';
 			}
 }
@@ -44,7 +51,7 @@ if ($method =='fetch_training_taken') {
 	$department = $_POST['department'];
 	$position = $_POST['position'];
 
-	$select ="SELECT etrs_training_record.id,etrs_training_record.employee_num,etrs_initial.initial_process,etrs_initial.initial_training_date, etrs_initial.initial_training_end_dates
+	$select ="SELECT etrs_training_record.id,etrs_training_record.employee_num,etrs_initial.initial_process,etrs_initial.initial_training_date, etrs_initial.initial_training_end_dates, etrs_initial.initial_status,etrs_initial.initial_remarks
 FROM etrs_training_record LEFT JOIN etrs_initial ON etrs_training_record.employee_num = etrs_initial.emp_id WHERE etrs_training_record.employee_num = '$employee_num'";
 	$stmt = $conn->prepare($select);
 	$stmt->execute();
@@ -54,6 +61,8 @@ FROM etrs_training_record LEFT JOIN etrs_initial ON etrs_training_record.employe
 					echo '<td>'.$j['initial_process'].'</td>';
 					echo '<td>'.$j['initial_training_date'].'</td>';
 					echo '<td>'.$j['initial_training_end_dates'].'</td>';
+					echo '<td>'.$j['initial_status'].'</td>';
+					echo '<td>'.$j['initial_remarks'].'</td>';
 			echo '</tr>';
 		}
 	}else{
@@ -105,7 +114,7 @@ if ($method =='fetch_training_taken_final') {
 	$department = $_POST['department'];
 	$position = $_POST['position'];
 
-	$select ="SELECT etrs_training_record.id,etrs_training_record.employee_num,etrs_final.final_process, etrs_final.final_training_date, etrs_final.final_training_ends_dates
+	$select ="SELECT etrs_training_record.id,etrs_training_record.employee_num,etrs_final.final_process, etrs_final.final_training_date, etrs_final.final_training_ends_dates,etrs_final.final_status, etrs_final.final_remarks
 FROM etrs_training_record LEFT JOIN etrs_final ON etrs_training_record.employee_num = etrs_final.emp_id WHERE etrs_training_record.employee_num = '$employee_num'";
 	$stmt = $conn->prepare($select);
 	$stmt->execute();
@@ -115,6 +124,8 @@ FROM etrs_training_record LEFT JOIN etrs_final ON etrs_training_record.employee_
 					echo '<td>'.$j['final_process'].'</td>';
 					echo '<td>'.$j['final_training_date'].'</td>';
 					echo '<td>'.$j['final_training_ends_dates'].'</td>';
+					echo '<td>'.$j['final_status'].'</td>';
+					echo '<td>'.$j['final_remarks'].'</td>';
 			echo '</tr>';
 		}
 	}else{
@@ -167,7 +178,7 @@ if ($method =='fetch_training_taken_sb_initial') {
 	$department = $_POST['department'];
 	$position = $_POST['position'];
 
-	$select ="SELECT etrs_training_record.id,etrs_training_record.employee_num,etrs_initial_practice.initial_practice_process, etrs_initial_practice.initial_practice_training_date, etrs_initial_practice.initial_practice_training_end_date
+	$select ="SELECT etrs_training_record.id,etrs_training_record.employee_num,etrs_initial_practice.initial_practice_process, etrs_initial_practice.initial_practice_training_date, etrs_initial_practice.initial_practice_training_end_date,etrs_initial_practice.initial_practice_status, etrs_initial_practice.initial_practice_remarks
 FROM etrs_training_record
  LEFT JOIN etrs_initial_practice ON etrs_training_record.employee_num = etrs_initial_practice.emp_id WHERE etrs_training_record.employee_num = '$employee_num'";
 	$stmt = $conn->prepare($select);
@@ -178,6 +189,8 @@ FROM etrs_training_record
 					echo '<td>'.$j['initial_practice_process'].'</td>';
 					echo '<td>'.$j['initial_practice_training_date'].'</td>';
 					echo '<td>'.$j['initial_practice_training_end_date'].'</td>';
+					echo '<td>'.$j['initial_practice_status'].'</td>';
+					echo '<td>'.$j['initial_practice_remarks'].'</td>';
 			echo '</tr>';
 		}
 	}else{
@@ -230,7 +243,7 @@ if ($method =='fetch_training_taken_sb_final') {
 	$department = $_POST['department'];
 	$position = $_POST['position'];
 
-	$select ="SELECT etrs_training_record.id,etrs_training_record.employee_num,etrs_final_practice.final_practice_process ,etrs_final_practice.final_practice_training_date,etrs_final_practice.final_practice_training_end_date FROM etrs_training_record
+	$select ="SELECT etrs_training_record.id,etrs_training_record.employee_num,etrs_final_practice.final_practice_process ,etrs_final_practice.final_practice_training_date,etrs_final_practice.final_practice_training_end_date,etrs_final_practice.final_practice_status,etrs_final_practice.final_practice_remarks FROM etrs_training_record
  LEFT JOIN etrs_final_practice ON etrs_training_record.employee_num = etrs_final_practice.emp_id WHERE etrs_training_record.employee_num = '$employee_num'";
 	$stmt = $conn->prepare($select);
 	$stmt->execute();
@@ -240,6 +253,8 @@ if ($method =='fetch_training_taken_sb_final') {
 					echo '<td>'.$j['final_practice_process'].'</td>';
 					echo '<td>'.$j['final_practice_training_date'].'</td>';
 					echo '<td>'.$j['final_practice_training_end_date'].'</td>';
+					echo '<td>'.$j['final_practice_status'].'</td>';
+					echo '<td>'.$j['final_practice_remarks'].'</td>';
 			echo '</tr>';
 		}
 	}else{

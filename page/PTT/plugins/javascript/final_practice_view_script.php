@@ -39,6 +39,7 @@ const get_for_update_final_practice =(param)=>{
     var final_practice_status = string[9];
     var final_practice_training_date = string[10];
     var final_practice_training_end_date = string[11];
+    var final_practice_remarks = string[12];
 
 document.getElementById('final_practice_id_reupdate').value = id;
 document.getElementById('final_practice_batch_no_reupdate').value = batch_no;
@@ -52,6 +53,7 @@ document.getElementById('final_practice_process_reupdate').value = final_practic
 document.getElementById('final_practice_status_reupdate').value = final_practice_status;
 document.getElementById('final_practice_training_date_reupdate').value = final_practice_training_date;
 document.getElementById('final_practice_training_end_date_reupdate').value = final_practice_training_end_date;
+document.getElementById('final_practice_remarks_reupdate').value  = final_practice_remarks;
 
 }
 
@@ -63,6 +65,7 @@ const reupdate_final_practice_record =()=>{
     var final_practice_status = document.getElementById('final_practice_status_reupdate').value;
     var final_practice_training_date = document.getElementById('final_practice_training_date_reupdate').value;
     var final_practice_training_end_date = document.getElementById('final_practice_training_end_date_reupdate').value;
+    var final_practice_remarks = document.getElementById('final_practice_remarks_reupdate').value
      $.ajax({
         url: '../../process/ptt/final_practice.php',
         type: 'POST', 
@@ -74,7 +77,8 @@ const reupdate_final_practice_record =()=>{
             final_practice_process:final_practice_process,
             final_practice_status:final_practice_status,
             final_practice_training_date:final_practice_training_date,
-            final_practice_training_end_date:final_practice_training_end_date
+            final_practice_training_end_date:final_practice_training_end_date,
+            final_practice_remarks:final_practice_remarks
         },success:function(x){
             if (x == 'success') {
                swal('Success',x,'success');

@@ -4,7 +4,7 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
             <div id="final_registration_code" hidden>
-
+ 
             </div>
 
         </h5>
@@ -15,21 +15,22 @@
       </div>
       <div class="modal-body">
            <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                         <input type="hidden" name="final_id" id="final_id_reupdate">
                      <span>Batch No:   </span> <input type="text" id="final_batch_no_reupdate" class="form-control"   class="noSpace">
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                      <span> Employee No:   </span> <input type="text" id="emp_id_reupdates" class="form-control" autocomplete="OFF" class="noSpace">
                 </div>
-                 <div class="col-4">
+                 <div class="col-3">
                      <span> Gender:   </span> <input type="text" id="final_gender_reupdate" class="form-control"  autocomplete="OFF" class="noSpace">
-                </div>                
+                </div>     
+                <div class="col-3">
+                     <span>Full Name:</span> <input type="text" name="final_full_name_reupdate" id="final_full_name_reupdate" class="form-control">
+                 </div>           
            </div>
            <div class="row">
-                 <div class="col-3">
-                     <span>Full Name:</span> <input type="text" name="final_full_name_reupdate" id="final_full_name_reupdate" class="form-control">
-                 </div>
+                 
                  <div class="col-3">
                      <span>Department:</span> <input type="text" name="final_department_reupdate" id="final_department_reupdate" class="form-control">
                  </div>
@@ -38,6 +39,9 @@
                  </div>
                  <div class="col-3">
                      <span>Date Hired:</span> <input type="text" name="final_date_hired_update" id="final_date_hired_reupdate" class="form-control">
+                 </div>
+                 <div class="col-3">
+                     <span>Remarks:</span> <input type="text" name="final_remarks_reupdate" id="final_remarks_reupdate" class="form-control">
                  </div>
            </div>  
            <div class="row">

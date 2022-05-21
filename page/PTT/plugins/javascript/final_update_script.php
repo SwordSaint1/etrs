@@ -74,6 +74,7 @@ const update_final_record =()=>{
     var final_status = document.getElementById('final_status_update').value;
     var final_training_date = document.getElementById('final_training_date_update').value;
     var final_training_end_date_updates = document.getElementById('final_training_ends_date_updates').value;
+    var final_remarks = document.getElementById('final_remarks').value;
      $.ajax({
         url: '../../process/ptt/final_record.php',
         type: 'POST', 
@@ -85,7 +86,8 @@ const update_final_record =()=>{
             final_process:final_process,
             final_status:final_status,
             final_training_date:final_training_date,
-            final_training_end_date_updates:final_training_end_date_updates
+            final_training_end_date_updates:final_training_end_date_updates,
+            final_remarks:final_remarks
         },success:function(x){
 
         if (x == 'Training Record Already Exist!') {

@@ -15,21 +15,22 @@
       </div>
       <div class="modal-body">
            <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                         <input type="hidden" name="final_id" id="final_practice_id">
                      <span>Batch No:   </span> <input type="text" id="final_practice_batch_no_update" class="form-control"   class="noSpace">
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                      <span> Employee No:   </span> <input type="text" id="emp_id_update_final_practice" class="form-control" autocomplete="OFF" class="noSpace">
                 </div>
-                 <div class="col-4">
+                 <div class="col-3">
                      <span> Gender:   </span> <input type="text" id="final_practice_gender_update" class="form-control"  autocomplete="OFF" class="noSpace">
-                </div>                
-           </div>
-           <div class="row">
+                </div>  
                  <div class="col-3">
                      <span>Full Name:</span> <input type="text" name="final_full_name_update" id="final_practice_full_name_update" class="form-control">
-                 </div>
+                 </div>              
+           </div>
+           <div class="row">
+                
                  <div class="col-3">
                      <span>Department:</span> <input type="text" name="final_department_update" id="final_practice_department_update" class="form-control">
                  </div>
@@ -38,6 +39,9 @@
                  </div>
                  <div class="col-3">
                      <span>Date Hired:</span> <input type="text" name="final_date_hired_update" id="final_practice_date_hired_update" class="form-control">
+                 </div>
+                 <div class="col-3">
+                     <span>Remarks:</span> <input type="text" name="final_practice_remarks" id="final_practice_remarks" class="form-control">
                  </div>
            </div>  
            <div class="row">

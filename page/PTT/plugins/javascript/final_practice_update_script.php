@@ -71,6 +71,7 @@ const update_final_practice_record =()=>{
     var final_practice_status = document.getElementById('final_practice_status_update').value;
     var final_practice_training_date = document.getElementById('final_practice_training_date_update').value;
     var final_practice_training_end_date = document.getElementById('final_practice_training_end_date_update').value;
+    var final_practice_remarks = document.getElementById('final_practice_remarks').value;
 
      $.ajax({
         url: '../../process/ptt/final_practice.php',
@@ -83,7 +84,8 @@ const update_final_practice_record =()=>{
             final_practice_process:final_practice_process,
             final_practice_status:final_practice_status,
             final_practice_training_date:final_practice_training_date,
-            final_practice_training_end_date:final_practice_training_end_date
+            final_practice_training_end_date:final_practice_training_end_date,
+            final_practice_remarks:final_practice_remarks
         },success:function(x){
 
         if (x == 'Training Record Already Exist!') {

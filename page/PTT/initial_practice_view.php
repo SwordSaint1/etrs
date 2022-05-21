@@ -74,6 +74,7 @@
                     <th>Status</th>
                     <th>Training Start Date</th>
                     <th>Training End Date</th>
+                    <th>Remarks</th>
                     
             </thead>
             <tbody id="view_data_initial_practice_training_records" style="text-align:center;"></tbody>

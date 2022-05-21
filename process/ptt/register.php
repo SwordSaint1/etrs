@@ -24,6 +24,7 @@ if ($method == 'register_training_record') {
 	$theory_remarks = $_POST['theory_remarks'];
 	$training_end_date = $_POST['training_end_date'];
 	$provider = $_POST['provider'];
+	$spdate_hired = $_POST['spdate_hired'];
 
 	$check = "SELECT id FROM etrs_training_record WHERE employee_num = '$employee_num'";
 
@@ -34,7 +35,7 @@ if ($method == 'register_training_record') {
 		echo 'Training Record Already Exist!';
 	
 	}else{
-		$insert = "INSERT INTO etrs_training_record (`batch_no`,`employee_num`,`gender`,`full_name`,`department`,`position`,`theory_training`,`training_date`,`theory_remarks`,`registration_code`,`date_hired`,`training_end_date`,`provider`) VALUES ('$batch_no','$employee_num','$gender','$full_name','$department','$position','$theory_training','$training_date','$theory_remarks','$registration_code','$date_hired','$training_end_date','$provider')";
+		$insert = "INSERT INTO etrs_training_record (`batch_no`,`employee_num`,`gender`,`full_name`,`department`,`position`,`theory_training`,`training_date`,`theory_remarks`,`registration_code`,`date_hired`,`training_end_date`,`provider`,`spdate_hired`) VALUES ('$batch_no','$employee_num','$gender','$full_name','$department','$position','$theory_training','$training_date','$theory_remarks','$registration_code','$date_hired','$training_end_date','$provider','$spdate_hired')";
 		$stmt= $conn->prepare($insert);
 		if ($stmt->execute()) {
 
@@ -66,6 +67,7 @@ if ($method == 'preview_training_record_data') {
 			echo '<td><b>'.$x['gender'].'</b></td>';
 			echo '<td><b>'.$x['department'].'</b></td>';
 			echo '<td><b>'.$x['position'].'</b></td>';
+		    echo '<td><b>'.$x['spdate_hired'].'</b></td>';
 		    echo '<td><b>'.$x['date_hired'].'</b></td>';
 			echo '<td><b>'.$x['theory_training'].'</b></td>';
 			echo '<td><b>'.$x['training_date'].'</b></td>';
